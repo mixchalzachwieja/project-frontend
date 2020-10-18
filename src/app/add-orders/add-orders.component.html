@@ -1,0 +1,14 @@
+<h2>Złóż nowe zamówienie</h2>
+<form #new_order>
+    <div class="form-group">
+     <ejs-multiselect #mulitselection id='localData' #local [dataSource]='movies_list' [fields]='localFields' [placeholder]='placeHolder'></ejs-multiselect> 
+         <p><input placeholder="Numer telefonu" type="text" class="form-control input-lg" #phone></p>
+         <p><input placeholder="Adres zamawiającego" type="text" class="form-control input-lg" #street></p>
+         <p>	<input placeholder="Numer pesel" type="text" class="form-control input-lg" #pesel></p>
+         <p> <input placeholder="Imię" type="text" class="form-control input-lg" #name></p>
+         <p>  <input placeholder="Nazwisko" type="text" class="form-control input-lg" #surname></p>
+     </div>
+     <button type="button" class="btn btn-primary" 
+     (click)="saveOrderToSpring(phone.value, street.value, pesel.value, name.value, surname.value, mulitselection.angularValue, new_order)">
+         Zamów</button>
+ </form>

@@ -1,91 +1,18 @@
 <div class="container">
-  <div class="jumbotron">
-    <img class="logo" src="https://images.creativemarket.com/0.1.0/ps/7887141/300/200/m2/fpnw/wm0/video_logo-.png?1583730675&s=7b43df1d3d42fad1d8e395c21fda8683" alt="">
-  </div>  <div class="panel panel-primary">
-    <div class="panel-heading">Status</div>
-    <div class="panel-body">
-      <h3>Sklep</h3>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-    <form>
-  
-       <h2>Złóż nowe zamówienie</h2>
-  
-       <div class="form-group">
-		<p>
-		<select class="form-control">
-
-			<option *ngFor="let movie of movies" value="{{movie.id}}" name="{{movie.name}}" (click)="movieSet($event)">{{movie.name}}</option>
-
-		</select>
-				  </p>
-			 <p><input placeholder="Numer telefonu" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg"></p>
-				<p><input placeholder="Adres zamawiającego" [(ngModel)]="address" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg"></p>
-					<p>	<input placeholder="Numer pesel" [(ngModel)]="pesel" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg"></p>
-						<p> <input placeholder="Imię" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg"></p>
-							<p>  <input placeholder="Nazwisko" [(ngModel)]="surname" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg"></p>
-        </div>
-        <button type="button" class="btn btn-primary" (click)="saveOrderToSpring()">Zamów</button>
-    </form>
-
-</div>
-<br>
-<br>
-
-<div *ngIf="orders">
-
-<div class="container">
-	<table id="cart" class="table table-hover table-condensed">
-    				<thead>
-						<tr>
-							<th style="width:50%">Product</th>
-							<th style="width:10%">Price</th>
-							<th style="width:8%">Quantity</th>
-							<th style="width:22%" class="text-center">Subtotal</th>
-							<th style="width:10%"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let order of orders">
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin">ID: {{order.id}} | NAME: {{order.movie.name}}</h4>
-										<p>  {{order.address}} </p>
-										<p>  {{order.phone}} </p>
-										<p>  {{order.pesel}} </p>
-										<p>  {{order.name}} </p>
-										<p>  {{order.surname}} </p>
-									</div>
-								</div>
-							</td>
-							<td data-th="Price">{{order.movie.price}}</td>
-							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
-							</td>
-							<td data-th="Subtotal" class="text-center">brak</td>
-							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button name="{{order.id}}" (click)="remove($event)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-							</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr class="visible-xs">
-							<td class="text-center"><strong>brak</strong></td>
-						</tr>
-						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total brak</strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
-						</tr>
-					</tfoot>
-				</table>
-</div>
+	<img src="../assets/logo.png" alt="">
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="navbar-header">
+		  <a class="navbar-brand" href="#">WYPOŻYCZALNIA FILMÓW</a>
+		</div>
+		<ul class="nav navbar-nav">
+		  <li><a routerLink="/" routerLinkActive="active">Strona główna</a> </li>
+		  <li><a routerLink="/add-new-order" routerLinkActive="active">Dodaj nowe zamówienie</a> </li>
+		  <li><a routerLink="/list-orders" routerLinkActive="active">Lista zamówień</a> </li>
+		</ul>
+	  </div>
+	</nav>
+	<div>
+		<router-outlet></router-outlet>
+	</div>
 </div>

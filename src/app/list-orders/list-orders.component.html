@@ -1,0 +1,54 @@
+
+	<table id="cart" class="table table-hover table-condensed">
+		<thead>
+			<tr>
+				<th style="width:50%">Produkt</th>
+				<th style="width:10%">Film</th>
+				<th style="width:8%">Cena</th>
+				<th style="width:22%" class="text-center">Koszt całkowity</th>
+				<th style="width:10%"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let order of orders">
+				<td data-th="Produkt">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+						<div class="col-sm-10">
+							
+							<p>ID zamówienia: {{order.id}}</p>
+							<p>Adress zamawijącego: {{order.address.street}}</p>
+						</div>
+					</div>
+				</td>
+				<td data-th="Film">
+					<div *ngFor="let movie of order.movies">
+					{{movie.name}}
+				</div>
+				</td>
+				<td data-th="Cena">
+					<div *ngFor="let movie of order.movies">
+					{{movie.price}}
+				</div>
+				</td>
+				<td data-th="Koszt całkowity" class="text-center">{{order.subtotal}}</td>
+				<td class="actions" data-th="">
+					<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+					<button name="{{order.id}}" (click)="remove($event)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr class="visible-xs">
+				<td class="text-center"><strong>brak</strong></td>
+			</tr>
+			<tr>
+				<td></td>
+				<!-- <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td> -->
+				<td colspan="2" class="hidden-xs"></td>
+				<td class="hidden-xs text-center"><strong>Total brak {{total}}</strong></td>
+				<td></td>
+				<!-- <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td> -->
+			</tr>
+		</tfoot>
+	</table>
